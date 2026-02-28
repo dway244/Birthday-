@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>happy birthday Anjali ❤️ | from PRINCESHU</title>
   <!-- romantic fonts & icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,9 +21,9 @@
       overflow-x: hidden;
       height: 100vh;
       width: 100vw;
+      background: #ffdde1;
     }
 
-    /* both pages share a dreamy, majestic romantic background */
     .page {
       position: absolute;
       top: 0;
@@ -33,11 +33,12 @@
       background: radial-gradient(circle at 30% 40%, #ffdde1, #f9c9e2, #d4afcd, #b38b9e);
       background-size: 400% 400%;
       animation: gradientShift 16s ease infinite;
-      transition: opacity 0.8s ease;
+      transition: opacity 0.4s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      overflow-y: auto;
     }
 
     @keyframes gradientShift {
@@ -46,7 +47,6 @@
       100% { background-position: 0% 0%; }
     }
 
-    /* floating hearts (romantic vibe) */
     .heart-float {
       position: absolute;
       color: rgba(255, 120, 160, 0.3);
@@ -73,9 +73,9 @@
     .heart-float:nth-child(9) { left: 45%; animation-duration: 10s; animation-delay: 8s; }
     .heart-float:nth-child(10) { left: 75%; animation-duration: 12s; animation-delay: 2s; }
 
-    /* ---------- PAGE 1 : THE GIFT BOX (that pops like a balloon) ---------- */
+    /* ---------- PAGE 1 : GIFT BOX ---------- */
     #page1 {
-      z-index: 20;
+      z-index: 30;
     }
 
     .gift-container {
@@ -86,7 +86,7 @@
       width: 100%;
       height: 100%;
       cursor: pointer;
-      z-index: 30;
+      z-index: 31;
     }
 
     .gift-box {
@@ -100,7 +100,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s;
       transform-origin: center center;
       cursor: pointer;
       animation: floatBox 3s infinite ease-in-out;
@@ -173,7 +172,6 @@
       color: #ffeb99;
     }
 
-    /* POP animation (like a balloon burst) */
     .pop {
       animation: balloonPop 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
       pointer-events: none;
@@ -186,29 +184,33 @@
       100% { transform: scale(0) rotate(0deg); opacity: 0; filter: blur(10px); }
     }
 
-    /* ---------- PAGE 2 : PHOTO + BIRTHDAY WISHES ---------- */
+    /* ---------- PAGE 2 : BIG PHOTO (60% screen width) + HEADING + NEXT ---------- */
     #page2 {
-      z-index: 10;
+      z-index: 20;
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: radial-gradient(circle at 20% 30%, #ffc0cb, #e6a8d7, #d291bc, #b3779e);
-      color: white;
-      text-align: center;
-      padding: 2rem 1rem;
-      overflow-y: auto;
+      padding: 1.5rem 1rem;
     }
 
-    .photo-frame {
-      width: 260px;
-      height: 260px;
+    /* larger photo frame — now 60% of smartphone screen (60vw) with a max size */
+    .photo-frame-large {
+      width: min(60vw, 380px);   /* 60% of viewport width, capped at 380px on big screens */
+      height: min(60vw, 380px);  /* keep it square */
       border-radius: 50%;
       border: 8px solid rgba(255, 240, 210, 0.9);
       box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9;
       overflow: hidden;
-      margin-bottom: 2rem;
+      margin: 1rem 0 0.8rem 0;
       animation: softGlow 3s infinite;
+    }
+
+    .photo-frame-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     @keyframes softGlow {
@@ -217,38 +219,85 @@
       100% { box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9; }
     }
 
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+    .birthday-heading {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.2rem, 10vw, 3.5rem);
+      color: #fff6f0;
+      text-shadow: 4px 4px 10px #b34b6e, 2px 2px 0 #ffb6c1;
+      margin: 0.5rem 0 1rem 0;
+      letter-spacing: 2px;
+      text-align: center;
+      line-height: 1.2;
     }
 
-    .wishes-box {
-      max-width: 800px;
-      width: 95%;
-      background: rgba(255, 255, 255, 0.18);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 2px solid rgba(255, 235, 215, 0.5);
+    .next-button {
+      background: rgba(255, 215, 235, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid white;
+      border-radius: 50px;
+      padding: 14px 36px;
+      font-size: 1.7rem;
+      font-family: 'Dancing Script', cursive;
+      font-weight: bold;
+      color: #a13d5f;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 1rem 0 2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .next-button i {
+      font-size: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .next-button:hover i {
+      transform: translateX(6px);
+    }
+
+    .next-button:active {
+      transform: scale(0.96);
+    }
+
+    /* ---------- PAGE 3 : LETTER ONLY ---------- */
+    #page3 {
+      z-index: 10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem 3rem;
+    }
+
+    .letter-box {
+      max-width: 750px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 2px solid rgba(255, 235, 215, 0.6);
       border-radius: 48px 48px 48px 12px;
-      padding: 2.2rem 2rem;
+      padding: 2rem 1.8rem;
       box-shadow: 0 30px 50px rgba(123, 45, 68, 0.4), 0 0 0 2px #ffdab9 inset;
       color: #2e1b2a;
-      text-align: left;
       font-family: 'Dancing Script', cursive;
       font-weight: 600;
-      line-height: 1.8;
-      font-size: 1.3rem;
+      line-height: 1.7;
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
       border-left: 12px solid #ffb3c6;
+      margin: 1rem 0;
     }
 
-    .wishes-box p {
+    .letter-box p {
       margin-bottom: 1.2rem;
       text-shadow: 0 1px 2px white;
     }
 
-    .wishes-box .signature {
+    .letter-box .signature {
       font-family: 'Great Vibes', cursive;
       font-size: 2.2rem;
       text-align: right;
@@ -258,22 +307,19 @@
       padding-top: 1rem;
     }
 
-    .wishes-box i.fa-heart {
-      color: #dc143c;
-      font-size: 2rem;
-      margin: 0 0.2rem;
+    .back-link {
+      margin-top: 1rem;
+      color: white;
+      font-size: 1.4rem;
+      background: rgba(0,0,0,0.1);
+      padding: 0.4rem 1.5rem;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.5);
     }
 
-    .name-highlight {
-      font-size: 2rem;
-      font-weight: 700;
-      background: linear-gradient(45deg, #c44569, #e66767);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: inline-block;
-    }
-
-    /* ---------- CONFETTI / EXPLOSION CANVAS ---------- */
+    /* confetti canvas */
     #confetti-canvas {
       position: fixed;
       top: 0;
@@ -289,7 +335,8 @@
       display: none;
     }
 
-    @media (max-width: 600px) {
+    /* mobile fine-tuning */
+    @media (max-width: 480px) {
       .gift-box {
         width: 200px;
         height: 200px;
@@ -297,20 +344,20 @@
       .click-hint {
         font-size: 1.4rem;
         bottom: -45px;
+        white-space: nowrap;
       }
-      .wishes-box {
-        font-size: 1rem;
-        padding: 1.5rem;
+      .next-button {
+        font-size: 1.5rem;
+        padding: 12px 28px;
       }
-      .photo-frame {
-        width: 200px;
-        height: 200px;
+      .letter-box {
+        padding: 1.5rem 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- floating hearts background -->
+  <!-- floating hearts -->
   <div class="heart-float"><i class="fas fa-heart"></i></div>
   <div class="heart-float"><i class="fas fa-heart"></i></div>
   <div class="heart-float"><i class="fas fa-heart"></i></div>
@@ -332,56 +379,77 @@
     </div>
   </div>
 
-  <!-- PAGE 2 : PHOTO + WISHES -->
+  <!-- PAGE 2 : BIG PHOTO (60% screen) + HEADING + NEXT BUTTON -->
   <div id="page2" class="page">
-    <div class="photo-frame">
-      <!-- REPLACE SRC WITH YOUR GIRLFRIEND'S PHOTO (e.g., anjali.jpg) -->
-      <img src="https://www.dropbox.com/scl/fi/qsd3mnourj9vikso2zu71/IMG-20260130-WA0109.jpg?rlkey=vbrnxnfvljm2m1bsbimtz6sm6&st=lcom77yw&dl=1" alt="Anjali's picture ❤️" onerror="this.src='https://via.placeholder.com/300?text=Anjali+Photo'">
-    </div>
-
-    <div class="wishes-box">
-      <p><i class="fas fa-heart" style="color:#ff4d6d;"></i>   <span class="name-highlight">My Dearest Anjali</span>,   <i class="fas fa-heart" style="color:#ff4d6d;"></i></p>
-      <p>Happy Birthday, my love 🎂❤️</p>
-      <p>Today is one of the most special days of the year because it’s the day the most beautiful person came into this world — you. I feel incredibly lucky that life brought you into my life, because you have filled my days with happiness, love, and meaning in ways I never imagined.</p>
-      <p>On your birthday, I just want you to smile, feel loved, and realize how important you are to me. You are not only my love but also my comfort, my support, and the person who makes my world brighter just by being there.</p>
-      <p>And today, I also want to say something honestly from my heart…</p>
-      <p>If sometimes I seem strict with you or behave a little strongly, please know it never comes from anger — it comes from care. I worry about you because you matter so much to me. I may not always express it perfectly, but everything I do comes from love.</p>
-      <p>I’m sorry if my strictness ever hurts you. The truth is, I love you more than words can explain, and sometimes my love turns into protectiveness because I want the best for you, always.</p>
-      <p>I promise to keep learning, to understand you better, and to love you in a way that always makes you feel safe, respected, and happy. Your happiness means everything to me.</p>
-      <p>May this year bring you endless smiles, success, peace, and all the dreams your heart wishes for. And I hope I can be beside you — supporting you, celebrating you, and loving you through every moment of your life.</p>
-      <p><strong>Happy Birthday, Anjali 🎉💖</strong><br>Keep shining, keep smiling, and never forget how deeply you are loved.</p>
-      <div class="signature">
-        Always yours,<br>PRINCESHU
-        <i class="fas fa-heart" style="font-size:1.8rem; vertical-align:middle;"></i>
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+      <!-- larger photo frame — now 60% width -->
+      <div class="photo-frame-large">
+        <!-- REPLACE SRC WITH YOUR GIRLFRIEND'S PHOTO (e.g., anjali.jpg) -->
+        <img src="https://www.dropbox.com/scl/fi/qsd3mnourj9vikso2zu71/IMG-20260130-WA0109.jpg?rlkey=vbrnxnfvljm2m1bsbimtz6sm6&st=cvhu6x52&dl=1" alt="Anjali" onerror="this.src='https://via.placeholder.com/300?text=Anjali'">
+      </div>
+      <!-- happy birthday heading -->
+      <h1 class="birthday-heading">happy birthday Anjali ❤️</h1>
+      
+      <!-- next page button -->
+      <div class="next-button" id="nextToPage3">
+        <span>next</span>
+        <i class="fas fa-arrow-right"></i>
       </div>
     </div>
   </div>
 
-  <!-- CONFETTI CANVAS for explosion effect -->
+  <!-- PAGE 3 : THE LETTER -->
+  <div id="page3" class="page">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+      <div class="letter-box">
+        <p><i class="fas fa-heart" style="color:#ff4d6d;"></i>   <span style="font-size: 2rem; font-weight:700;">My Dearest Anjali</span>,   <i class="fas fa-heart" style="color:#ff4d6d;"></i></p>
+        <p>Happy Birthday, my love 🎂❤️</p>
+        <p>Today is one of the most special days of the year because it’s the day the most beautiful person came into this world — you. I feel incredibly lucky that life brought you into my life, because you have filled my days with happiness, love, and meaning in ways I never imagined.</p>
+        <p>On your birthday, I just want you to smile, feel loved, and realize how important you are to me. You are not only my love but also my comfort, my support, and the person who makes my world brighter just by being there.</p>
+        <p>And today, I also want to say something honestly from my heart…</p>
+        <p>If sometimes I seem strict with you or behave a little strongly, please know it never comes from anger — it comes from care. I worry about you because you matter so much to me. I may not always express it perfectly, but everything I do comes from love.</p>
+        <p>I’m sorry if my strictness ever hurts you. The truth is, I love you more than words can explain, and sometimes my love turns into protectiveness because I want the best for you, always.</p>
+        <p>I promise to keep learning, to understand you better, and to love you in a way that always makes you feel safe, respected, and happy. Your happiness means everything to me.</p>
+        <p>May this year bring you endless smiles, success, peace, and all the dreams your heart wishes for. And I hope I can be beside you — supporting you, celebrating you, and loving you through every moment of your life.</p>
+        <p><strong>Happy Birthday, Anjali 🎉💖</strong><br>Keep shining, keep smiling, and never forget how deeply you are loved.</p>
+        <div class="signature">
+          Always yours,<br>PRINCESHU
+          <i class="fas fa-heart" style="font-size:1.8rem; vertical-align:middle;"></i>
+        </div>
+      </div>
+      <!-- back to photo page -->
+      <div class="back-link" id="backToPage2">
+        <i class="fas fa-heart"></i> back <i class="fas fa-heart"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFETTI CANVAS -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- AUDIO: happy birthday -->
+  <!-- AUDIO: happy birthday (starts after box click) -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://www.dropbox.com/scl/fi/dpz0s5fbo4zmf4jl2y4t3/I-Wish-You-Happy-Birthday-Song-Mp3-Ringtone-Download-Audio.mp3?rlkey=ymnbo4uch6fft7k45rx5dc0of&st=uw24263b&dl=1" type="audio/mpeg">
   </audio>
 
   <script>
     (function() {
-      // ----- DOM elements -----
       const page1 = document.getElementById('page1');
       const page2 = document.getElementById('page2');
+      const page3 = document.getElementById('page3');
       const giftBox = document.getElementById('giftBox');
       const giftContainer = document.getElementById('giftContainer');
+      const nextBtn = document.getElementById('nextToPage3');
+      const backBtn = document.getElementById('backToPage2');
       const audio = document.getElementById('bg-music');
       const canvas = document.getElementById('confetti-canvas');
       const ctx = canvas.getContext('2d');
 
-      // ----- Confetti particles -----
+      // confetti setup
       let particles = [];
       let animationId = null;
       let explosionActive = false;
 
-      // Resize canvas to always match window
       function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -389,53 +457,44 @@
       window.addEventListener('resize', resizeCanvas);
       resizeCanvas();
 
-      // Particle class
       class Particle {
         constructor(x, y) {
           this.x = x;
           this.y = y;
-          // random velocity
           this.vx = (Math.random() - 0.5) * 12;
-          this.vy = (Math.random() - 0.5) * 12 - 5; // slight upward bias
+          this.vy = (Math.random() - 0.5) * 12 - 5;
           this.size = Math.random() * 8 + 4;
-          this.color = `hsl(${Math.random() * 60 + 320}, 80%, 65%)`; // pink/purple/red hues
-          this.shape = Math.random() > 0.6 ? 'ribbon' : 'confetti'; // some are ribbons (rectangles)
+          this.color = `hsl(${Math.random() * 60 + 320}, 80%, 65%)`;
+          this.shape = Math.random() > 0.6 ? 'ribbon' : 'confetti';
           this.rotation = Math.random() * 360;
-          this.life = 1.0; // opacity
+          this.life = 1.0;
           this.decay = 0.01 + Math.random() * 0.02;
         }
-
         update() {
           this.x += this.vx;
           this.y += this.vy;
-          this.vy += 0.15; // gravity
+          this.vy += 0.15;
           this.rotation += 2;
           this.life -= this.decay;
           return this.life > 0;
         }
-
         draw(ctx) {
           ctx.save();
           ctx.translate(this.x, this.y);
           ctx.rotate((this.rotation * Math.PI) / 180);
           ctx.globalAlpha = this.life;
           if (this.shape === 'ribbon') {
-            // draw a little rectangle like a ribbon
             ctx.fillStyle = this.color;
             ctx.fillRect(-this.size/2, -this.size/4, this.size, this.size/2);
-            // add a small highlight
             ctx.fillStyle = 'white';
             ctx.globalAlpha = this.life * 0.4;
             ctx.fillRect(-this.size/3, -this.size/6, this.size/3, this.size/6);
           } else {
-            // confetti circle or square
             ctx.fillStyle = this.color;
             ctx.beginPath();
             if (Math.random() > 0.5) {
-              // circle
               ctx.arc(0, 0, this.size/2, 0, Math.PI * 2);
             } else {
-              // square
               ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
             }
             ctx.fill();
@@ -444,21 +503,15 @@
         }
       }
 
-      // Start explosion at given center (x, y)
       function startExplosion(centerX, centerY) {
         if (explosionActive) return;
         explosionActive = true;
         canvas.style.display = 'block';
-
-        // create 120 particles
         particles = [];
         for (let i = 0; i < 120; i++) {
           particles.push(new Particle(centerX, centerY));
         }
-
-        // stop any previous animation
         if (animationId) cancelAnimationFrame(animationId);
-
         function animate() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           let anyAlive = false;
@@ -474,7 +527,6 @@
           if (anyAlive) {
             animationId = requestAnimationFrame(animate);
           } else {
-            // stop
             canvas.style.display = 'none';
             explosionActive = false;
             animationId = null;
@@ -483,37 +535,45 @@
         animate();
       }
 
-      // ----- Pop and transition -----
+      // navigation
+      function goToPage2() {
+        page1.style.display = 'none';
+        page2.style.display = 'flex';
+        page3.style.display = 'none';
+      }
+
+      function goToPage3() {
+        page1.style.display = 'none';
+        page2.style.display = 'none';
+        page3.style.display = 'flex';
+      }
+
+      function goToPage2From3() {
+        page1.style.display = 'none';
+        page2.style.display = 'flex';
+        page3.style.display = 'none';
+      }
+
       let isPopped = false;
 
       function onGiftClick(e) {
         if (isPopped) return;
         isPopped = true;
 
-        // Get center of gift box for explosion
         const rect = giftBox.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-
-        // Start confetti explosion
         startExplosion(centerX, centerY);
 
-        // Play music (user interaction)
-        audio.play().catch(err => console.warn('Audio play failed:', err));
+        audio.play().catch(err => console.warn('audio play:', err));
 
-        // Add pop animation to box
         giftBox.classList.add('pop');
 
-        // After pop animation ends (0.6s) + a little delay to enjoy confetti, switch to page2
         setTimeout(() => {
-          page1.style.display = 'none';
-          page2.style.display = 'flex';
-          // Optionally stop confetti after transition? It will continue and fade naturally.
-          // But we can also stop after a few seconds; it's okay.
-        }, 800); // 0.6s pop + 0.2s extra
+          goToPage2();
+        }, 800);
       }
 
-      // Attach events
       giftBox.addEventListener('click', onGiftClick);
       giftBox.addEventListener('touchstart', (e) => {
         e.preventDefault();
@@ -525,12 +585,25 @@
         }
       });
 
-      // Preload audio
+      nextBtn.addEventListener('click', goToPage3);
+      nextBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        goToPage3();
+      });
+
+      backBtn.addEventListener('click', goToPage2From3);
+      backBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        goToPage2From3();
+      });
+
       audio.load();
+
+      // initial state
+      page1.style.display = 'flex';
+      page2.style.display = 'none';
+      page3.style.display = 'none';
     })();
   </script>
-
-  <!-- reminder to replace image and audio -->
-  <div style="display: none;">Replace image src and audio source with your own files.</div>
 </body>
 </html>
