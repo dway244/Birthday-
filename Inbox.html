@@ -7,7 +7,7 @@
   <!-- romantic fonts & icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -47,6 +47,7 @@
       100% { background-position: 0% 0%; }
     }
 
+    /* floating hearts background (global) */
     .heart-float {
       position: absolute;
       color: rgba(255, 120, 160, 0.3);
@@ -184,25 +185,24 @@
       100% { transform: scale(0) rotate(0deg); opacity: 0; filter: blur(10px); }
     }
 
-    /* ---------- PAGE 2 : BIG PHOTO (60% screen width) + HEADING + NEXT ---------- */
+    /* ---------- PAGE 2 : BIG PHOTO (9:16) + HEADING + PULSING NEXT BUTTON ---------- */
     #page2 {
       z-index: 20;
       display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem 1rem;
+      padding: 1rem 1rem;
     }
 
-    /* larger photo frame — now 60% of smartphone screen (60vw) with a max size */
     .photo-frame-large {
-      width: min(60vw, 380px);   /* 60% of viewport width, capped at 380px on big screens */
-      height: min(60vw, 380px);  /* keep it square */
-      border-radius: 50%;
-      border: 8px solid rgba(255, 240, 210, 0.9);
-      box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9;
+      width: min(85vw, 450px);
+      aspect-ratio: 9 / 16;
+      border-radius: 28px;
+      border: 6px solid rgba(255, 240, 210, 0.9);
+      box-shadow: 0 25px 45px rgba(92, 36, 64, 0.7), 0 0 0 5px #ffdab9;
       overflow: hidden;
-      margin: 1rem 0 0.8rem 0;
+      margin: 0.8rem 0 0.8rem 0;
       animation: softGlow 3s infinite;
     }
 
@@ -214,22 +214,23 @@
     }
 
     @keyframes softGlow {
-      0% { box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9; }
-      50% { box-shadow: 0 20px 50px #ff99aa, 0 0 0 6px #ffe4b5; }
-      100% { box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9; }
+      0% { box-shadow: 0 25px 45px rgba(92, 36, 64, 0.7), 0 0 0 5px #ffdab9; }
+      50% { box-shadow: 0 30px 55px #ff99aa, 0 0 0 7px #ffe4b5; }
+      100% { box-shadow: 0 25px 45px rgba(92, 36, 64, 0.7), 0 0 0 5px #ffdab9; }
     }
 
     .birthday-heading {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.2rem, 10vw, 3.5rem);
+      font-size: clamp(2.2rem, 10vw, 3.8rem);
       color: #fff6f0;
-      text-shadow: 4px 4px 10px #b34b6e, 2px 2px 0 #ffb6c1;
-      margin: 0.5rem 0 1rem 0;
+      text-shadow: 4px 4px 12px #b34b6e, 2px 2px 0 #ffb6c1;
+      margin: 0.3rem 0 0.8rem 0;
       letter-spacing: 2px;
       text-align: center;
       line-height: 1.2;
     }
 
+    /* next button with pulse animation */
     .next-button {
       background: rgba(255, 215, 235, 0.7);
       backdrop-filter: blur(12px);
@@ -244,10 +245,17 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       cursor: pointer;
       transition: 0.3s;
-      margin: 1rem 0 2rem;
+      margin: 0.5rem 0 1.5rem;
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      animation: pulse 2s infinite ease-in-out; /* gentle pulse */
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+      50% { transform: scale(1.05); box-shadow: 0 15px 30px rgba(161, 61, 95, 0.4); }
+      100% { transform: scale(1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     }
 
     .next-button i {
@@ -263,7 +271,7 @@
       transform: scale(0.96);
     }
 
-    /* ---------- PAGE 3 : LETTER ONLY ---------- */
+    /* ---------- PAGE 3 : LETTER WITH FLOATING SPARKLES ---------- */
     #page3 {
       z-index: 10;
       display: none;
@@ -271,6 +279,7 @@
       align-items: center;
       justify-content: flex-start;
       padding: 2rem 1rem 3rem;
+      position: relative; /* for sparkle positioning */
     }
 
     .letter-box {
@@ -284,12 +293,44 @@
       padding: 2rem 1.8rem;
       box-shadow: 0 30px 50px rgba(123, 45, 68, 0.4), 0 0 0 2px #ffdab9 inset;
       color: #2e1b2a;
-      font-family: 'Dancing Script', cursive;
-      font-weight: 600;
-      line-height: 1.7;
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      font-family: 'Caveat', cursive;
+      font-weight: 500;
+      line-height: 1.6;
+      font-size: clamp(1.3rem, 4.5vw, 1.7rem);
       border-left: 12px solid #ffb3c6;
       margin: 1rem 0;
+      position: relative;
+      z-index: 5;
+    }
+
+    /* floating sparkles around the letter */
+    .sparkle {
+      position: absolute;
+      color: rgba(255, 255, 180, 0.7);
+      font-size: 1.2rem;
+      pointer-events: none;
+      z-index: 6;
+      animation: sparkleFloat 6s infinite alternate;
+    }
+
+    @keyframes sparkleFloat {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+      100% { transform: translateY(-30px) rotate(20deg); opacity: 0.9; }
+    }
+
+    /* individual sparkle positions (randomized) */
+    .sparkle1 { top: 5%; left: 2%; animation-duration: 7s; }
+    .sparkle2 { bottom: 10%; right: 3%; animation-duration: 8s; animation-delay: 1s; }
+    .sparkle3 { top: 20%; right: 8%; animation-duration: 6s; animation-delay: 0.5s; }
+    .sparkle4 { bottom: 25%; left: 5%; animation-duration: 9s; animation-delay: 2s; }
+    .sparkle5 { top: 60%; left: 10%; animation-duration: 7.5s; animation-delay: 1.2s; }
+
+    .letter-box .dearest {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      font-style: italic;
+      color: #8b3c5a;
     }
 
     .letter-box p {
@@ -299,7 +340,7 @@
 
     .letter-box .signature {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       text-align: right;
       color: #a13d5f;
       margin-top: 0.8rem;
@@ -319,6 +360,37 @@
       border: 1px solid rgba(255,255,255,0.5);
     }
 
+    /* ---------- MUSIC CONTROL (floating button) ---------- */
+    #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 215, 235, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid white;
+      border-radius: 50px;
+      padding: 12px 18px;
+      font-size: 1.8rem;
+      color: #a13d5f;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 100;
+      display: none; /* initially hidden */
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    #music-control i {
+      font-size: 2rem;
+    }
+
+    #music-control span {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+    }
+
     /* confetti canvas */
     #confetti-canvas {
       position: fixed;
@@ -335,7 +407,6 @@
       display: none;
     }
 
-    /* mobile fine-tuning */
     @media (max-width: 480px) {
       .gift-box {
         width: 200px;
@@ -357,7 +428,7 @@
   </style>
 </head>
 <body>
-  <!-- floating hearts -->
+  <!-- floating hearts background -->
   <div class="heart-float"><i class="fas fa-heart"></i></div>
   <div class="heart-float"><i class="fas fa-heart"></i></div>
   <div class="heart-float"><i class="fas fa-heart"></i></div>
@@ -379,18 +450,16 @@
     </div>
   </div>
 
-  <!-- PAGE 2 : BIG PHOTO (60% screen) + HEADING + NEXT BUTTON -->
+  <!-- PAGE 2 : HUGE 9:16 PHOTO + HEADING + PULSING NEXT BUTTON -->
   <div id="page2" class="page">
     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
-      <!-- larger photo frame — now 60% width -->
       <div class="photo-frame-large">
         <!-- REPLACE SRC WITH YOUR GIRLFRIEND'S PHOTO (e.g., anjali.jpg) -->
-        <img src="https://www.dropbox.com/scl/fi/qsd3mnourj9vikso2zu71/IMG-20260130-WA0109.jpg?rlkey=vbrnxnfvljm2m1bsbimtz6sm6&st=cvhu6x52&dl=1" alt="Anjali" onerror="this.src='https://via.placeholder.com/300?text=Anjali'">
+        <img src="https://www.dropbox.com/scl/fi/qsd3mnourj9vikso2zu71/IMG-20260130-WA0109.jpg?rlkey=vbrnxnfvljm2m1bsbimtz6sm6&st=cvhu6x52&dl=1" alt="Anjali" onerror="this.src='https://via.placeholder.com/450x800?text=Anjali'">
       </div>
-      <!-- happy birthday heading -->
       <h1 class="birthday-heading">happy birthday Anjali ❤️</h1>
       
-      <!-- next page button -->
+      <!-- next page button with pulse -->
       <div class="next-button" id="nextToPage3">
         <span>next</span>
         <i class="fas fa-arrow-right"></i>
@@ -398,11 +467,18 @@
     </div>
   </div>
 
-  <!-- PAGE 3 : THE LETTER -->
+  <!-- PAGE 3 : THE LETTER + FLOATING SPARKLES -->
   <div id="page3" class="page">
+    <!-- sparkles around the letter -->
+    <i class="fas fa-star sparkle sparkle1"></i>
+    <i class="fas fa-star sparkle sparkle2"></i>
+    <i class="fas fa-star sparkle sparkle3"></i>
+    <i class="fas fa-heart sparkle sparkle4" style="color: #ffb6c1;"></i>
+    <i class="fas fa-heart sparkle sparkle5" style="color: #ffb6c1;"></i>
+
     <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
       <div class="letter-box">
-        <p><i class="fas fa-heart" style="color:#ff4d6d;"></i>   <span style="font-size: 2rem; font-weight:700;">My Dearest Anjali</span>,   <i class="fas fa-heart" style="color:#ff4d6d;"></i></p>
+        <p><i class="fas fa-heart" style="color:#ff4d6d;"></i>   <span class="dearest">My Dearest Anjali</span>,   <i class="fas fa-heart" style="color:#ff4d6d;"></i></p>
         <p>Happy Birthday, my love 🎂❤️</p>
         <p>Today is one of the most special days of the year because it’s the day the most beautiful person came into this world — you. I feel incredibly lucky that life brought you into my life, because you have filled my days with happiness, love, and meaning in ways I never imagined.</p>
         <p>On your birthday, I just want you to smile, feel loved, and realize how important you are to me. You are not only my love but also my comfort, my support, and the person who makes my world brighter just by being there.</p>
@@ -424,12 +500,19 @@
     </div>
   </div>
 
+  <!-- MUSIC CONTROL BUTTON (initially hidden) -->
+  <div id="music-control">
+    <i class="fas fa-music"></i>
+    <span>playing</span>
+  </div>
+
   <!-- CONFETTI CANVAS -->
   <canvas id="confetti-canvas"></canvas>
 
-  <!-- AUDIO: happy birthday (starts after box click) -->
+  <!-- AUDIO: happy birthday -->
   <audio id="bg-music" loop preload="auto">
-    <source src="https://www.dropbox.com/scl/fi/dpz0s5fbo4zmf4jl2y4t3/I-Wish-You-Happy-Birthday-Song-Mp3-Ringtone-Download-Audio.mp3?rlkey=ymnbo4uch6fft7k45rx5dc0of&st=uw24263b&dl=1" type="audio/mpeg">
+    <source src="https://www.dropbox.com/scl/fi/dpz0s5fbo4zmf4jl2y4t3/I-Wish-You-Happy-Birthday-Song-Mp3-Ringtone-Download-Audio.mp3?rlkey=ymnbo4uch6fft7k45rx5dc0of&st=9l9twg7y&dl=1" type="audio/mpeg">
+    <source src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg" type="audio/ogg"> <!-- fallback -->
   </audio>
 
   <script>
@@ -444,6 +527,7 @@
       const audio = document.getElementById('bg-music');
       const canvas = document.getElementById('confetti-canvas');
       const ctx = canvas.getContext('2d');
+      const musicControl = document.getElementById('music-control');
 
       // confetti setup
       let particles = [];
@@ -555,6 +639,39 @@
       }
 
       let isPopped = false;
+      let musicPlaying = false;
+
+      function playMusic() {
+        audio.play().then(() => {
+          musicPlaying = true;
+          musicControl.style.display = 'flex';
+          musicControl.innerHTML = '<i class="fas fa-music"></i><span>playing</span>';
+        }).catch(err => {
+          console.warn('Audio play failed, retry', err);
+          setTimeout(() => {
+            audio.play().then(() => {
+              musicPlaying = true;
+              musicControl.style.display = 'flex';
+              musicControl.innerHTML = '<i class="fas fa-music"></i><span>playing</span>';
+            }).catch(e => console.log('audio retry failed', e));
+          }, 100);
+        });
+      }
+
+      function toggleMusic() {
+        if (audio.paused) {
+          audio.play().then(() => {
+            musicPlaying = true;
+            musicControl.innerHTML = '<i class="fas fa-music"></i><span>playing</span>';
+          }).catch(e => console.log(e));
+        } else {
+          audio.pause();
+          musicPlaying = false;
+          musicControl.innerHTML = '<i class="fas fa-volume-mute"></i><span>paused</span>';
+        }
+      }
+
+      musicControl.addEventListener('click', toggleMusic);
 
       function onGiftClick(e) {
         if (isPopped) return;
@@ -565,7 +682,7 @@
         const centerY = rect.top + rect.height / 2;
         startExplosion(centerX, centerY);
 
-        audio.play().catch(err => console.warn('audio play:', err));
+        playMusic();
 
         giftBox.classList.add('pop');
 
@@ -599,11 +716,12 @@
 
       audio.load();
 
-      // initial state
       page1.style.display = 'flex';
       page2.style.display = 'none';
       page3.style.display = 'none';
     })();
   </script>
+  <!-- reminder: replace image and audio source -->
+  <div style="display: none;">Replace image and audio with your own files.</div>
 </body>
 </html>
