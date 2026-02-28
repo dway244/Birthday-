@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>happy birthday Anjali ❤️ | from PRINCESHU</title>
+  <!-- romantic fonts & icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* both pages share a dreamy, majestic romantic background */
+    .page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100vh;
+      background: radial-gradient(circle at 30% 40%, #ffdde1, #f9c9e2, #d4afcd, #b38b9e);
+      background-size: 400% 400%;
+      animation: gradientShift 16s ease infinite;
+      transition: opacity 0.8s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* floating hearts (romantic vibe) */
+    .heart-float {
+      position: absolute;
+      color: rgba(255, 120, 160, 0.3);
+      font-size: 2rem;
+      pointer-events: none;
+      z-index: 1;
+      animation: float 10s linear infinite;
+      user-select: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.6; }
+      100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+    }
+
+    .heart-float:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+    .heart-float:nth-child(2) { left: 20%; animation-duration: 12s; animation-delay: 2s; }
+    .heart-float:nth-child(3) { left: 35%; animation-duration: 10s; animation-delay: 5s; }
+    .heart-float:nth-child(4) { left: 55%; animation-duration: 14s; animation-delay: 1s; }
+    .heart-float:nth-child(5) { left: 70%; animation-duration: 9s; animation-delay: 7s; }
+    .heart-float:nth-child(6) { left: 85%; animation-duration: 11s; animation-delay: 3s; }
+    .heart-float:nth-child(7) { left: 90%; animation-duration: 13s; animation-delay: 4s; }
+    .heart-float:nth-child(8) { left: 15%; animation-duration: 15s; animation-delay: 6s; }
+    .heart-float:nth-child(9) { left: 45%; animation-duration: 10s; animation-delay: 8s; }
+    .heart-float:nth-child(10) { left: 75%; animation-duration: 12s; animation-delay: 2s; }
+
+    /* ---------- PAGE 1 : THE GIFT BOX (that pops like a balloon) ---------- */
+    #page1 {
+      z-index: 20;
+    }
+
+    .gift-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 30;
+    }
+
+    .gift-box {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      background: #ff4d6d;
+      background: linear-gradient(145deg, #ff6f91, #ff3b5c);
+      border-radius: 20px 20px 30px 30px;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.3), 0 0 0 8px rgba(255,215,215,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      transform-origin: center center;
+      cursor: pointer;
+      animation: floatBox 3s infinite ease-in-out;
+    }
+
+    @keyframes floatBox {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .gift-box::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -5px;
+      width: 110%;
+      height: 40px;
+      background: #ff8da1;
+      border-radius: 30px 30px 10px 10px;
+      box-shadow: 0 5px 0 #d43b5a;
+    }
+
+    .gift-box::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 30px;
+      height: 100%;
+      background: #fce182;
+      transform: translateX(-50%);
+      border-radius: 20px;
+      box-shadow: inset -2px -2px 10px #d4a551;
+    }
+
+    .ribbon-bow {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 70px;
+      background: #fce182;
+      clip-path: polygon(50% 0%, 80% 30%, 100% 70%, 70% 100%, 50% 80%, 30% 100%, 0% 70%, 20% 30%);
+      z-index: 5;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .click-hint {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      text-shadow: 2px 2px 8px #b34b6e;
+      white-space: nowrap;
+      background: rgba(255, 192, 203, 0.4);
+      backdrop-filter: blur(5px);
+      padding: 8px 25px;
+      border-radius: 40px;
+      letter-spacing: 2px;
+      border: 1px solid rgba(255,255,240,0.7);
+    }
+
+    .click-hint i {
+      margin-left: 8px;
+      color: #ffeb99;
+    }
+
+    /* POP animation (like a balloon burst) */
+    .pop {
+      animation: balloonPop 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+      pointer-events: none;
+    }
+
+    @keyframes balloonPop {
+      0% { transform: scale(1) rotate(0deg); opacity: 1; }
+      30% { transform: scale(1.4) rotate(5deg); opacity: 0.9; }
+      60% { transform: scale(1.8) rotate(-8deg); opacity: 0.6; filter: blur(2px); }
+      100% { transform: scale(0) rotate(0deg); opacity: 0; filter: blur(10px); }
+    }
+
+    /* ---------- PAGE 2 : PHOTO + BIRTHDAY WISHES ---------- */
+    #page2 {
+      z-index: 10;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 20% 30%, #ffc0cb, #e6a8d7, #d291bc, #b3779e);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+    }
+
+    .photo-frame {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      border: 8px solid rgba(255, 240, 210, 0.9);
+      box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      animation: softGlow 3s infinite;
+    }
+
+    @keyframes softGlow {
+      0% { box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9; }
+      50% { box-shadow: 0 20px 50px #ff99aa, 0 0 0 6px #ffe4b5; }
+      100% { box-shadow: 0 20px 40px rgba(92, 36, 64, 0.6), 0 0 0 4px #ffdab9; }
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .wishes-box {
+      max-width: 800px;
+      width: 95%;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 2px solid rgba(255, 235, 215, 0.5);
+      border-radius: 48px 48px 48px 12px;
+      padding: 2.2rem 2rem;
+      box-shadow: 0 30px 50px rgba(123, 45, 68, 0.4), 0 0 0 2px #ffdab9 inset;
+      color: #2e1b2a;
+      text-align: left;
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
+      line-height: 1.8;
+      font-size: 1.3rem;
+      border-left: 12px solid #ffb3c6;
+    }
+
+    .wishes-box p {
+      margin-bottom: 1.2rem;
+      text-shadow: 0 1px 2px white;
+    }
+
+    .wishes-box .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.2rem;
+      text-align: right;
+      color: #a13d5f;
+      margin-top: 0.8rem;
+      border-top: 2px dashed #ffb3c6;
+      padding-top: 1rem;
+    }
+
+    .wishes-box i.fa-heart {
+      color: #dc143c;
+      font-size: 2rem;
+      margin: 0 0.2rem;
+    }
+
+    .name-highlight {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #c44569, #e66767);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* ---------- CONFETTI / EXPLOSION CANVAS ---------- */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      display: none;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .gift-box {
+        width: 200px;
+        height: 200px;
+      }
+      .click-hint {
+        font-size: 1.4rem;
+        bottom: -45px;
+      }
+      .wishes-box {
+        font-size: 1rem;
+        padding: 1.5rem;
+      }
+      .photo-frame {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- floating hearts background -->
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+  <div class="heart-float"><i class="fas fa-heart"></i></div>
+
+  <!-- PAGE 1 : GIFT BOX -->
+  <div id="page1" class="page">
+    <div class="gift-container" id="giftContainer">
+      <div class="gift-box" id="giftBox">
+        <div class="ribbon-bow"></div>
+      </div>
+      <span class="click-hint">pop me <i class="fas fa-heart"></i></span>
+    </div>
+  </div>
+
+  <!-- PAGE 2 : PHOTO + WISHES -->
+  <div id="page2" class="page">
+    <div class="photo-frame">
+      <!-- REPLACE SRC WITH YOUR GIRLFRIEND'S PHOTO (e.g., anjali.jpg) -->
+      <img src="https://www.dropbox.com/scl/fi/qsd3mnourj9vikso2zu71/IMG-20260130-WA0109.jpg?rlkey=vbrnxnfvljm2m1bsbimtz6sm6&st=lcom77yw&dl=1" alt="Anjali's picture ❤️" onerror="this.src='https://via.placeholder.com/300?text=Anjali+Photo'">
+    </div>
+
+    <div class="wishes-box">
+      <p><i class="fas fa-heart" style="color:#ff4d6d;"></i>   <span class="name-highlight">My Dearest Anjali</span>,   <i class="fas fa-heart" style="color:#ff4d6d;"></i></p>
+      <p>Happy Birthday, my love 🎂❤️</p>
+      <p>Today is one of the most special days of the year because it’s the day the most beautiful person came into this world — you. I feel incredibly lucky that life brought you into my life, because you have filled my days with happiness, love, and meaning in ways I never imagined.</p>
+      <p>On your birthday, I just want you to smile, feel loved, and realize how important you are to me. You are not only my love but also my comfort, my support, and the person who makes my world brighter just by being there.</p>
+      <p>And today, I also want to say something honestly from my heart…</p>
+      <p>If sometimes I seem strict with you or behave a little strongly, please know it never comes from anger — it comes from care. I worry about you because you matter so much to me. I may not always express it perfectly, but everything I do comes from love.</p>
+      <p>I’m sorry if my strictness ever hurts you. The truth is, I love you more than words can explain, and sometimes my love turns into protectiveness because I want the best for you, always.</p>
+      <p>I promise to keep learning, to understand you better, and to love you in a way that always makes you feel safe, respected, and happy. Your happiness means everything to me.</p>
+      <p>May this year bring you endless smiles, success, peace, and all the dreams your heart wishes for. And I hope I can be beside you — supporting you, celebrating you, and loving you through every moment of your life.</p>
+      <p><strong>Happy Birthday, Anjali 🎉💖</strong><br>Keep shining, keep smiling, and never forget how deeply you are loved.</p>
+      <div class="signature">
+        Always yours,<br>PRINCESHU
+        <i class="fas fa-heart" style="font-size:1.8rem; vertical-align:middle;"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFETTI CANVAS for explosion effect -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- AUDIO: happy birthday -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://www.dropbox.com/scl/fi/dpz0s5fbo4zmf4jl2y4t3/I-Wish-You-Happy-Birthday-Song-Mp3-Ringtone-Download-Audio.mp3?rlkey=ymnbo4uch6fft7k45rx5dc0of&st=uw24263b&dl=1" type="audio/mpeg">
+  </audio>
+
+  <script>
+    (function() {
+      // ----- DOM elements -----
+      const page1 = document.getElementById('page1');
+      const page2 = document.getElementById('page2');
+      const giftBox = document.getElementById('giftBox');
+      const giftContainer = document.getElementById('giftContainer');
+      const audio = document.getElementById('bg-music');
+      const canvas = document.getElementById('confetti-canvas');
+      const ctx = canvas.getContext('2d');
+
+      // ----- Confetti particles -----
+      let particles = [];
+      let animationId = null;
+      let explosionActive = false;
+
+      // Resize canvas to always match window
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // Particle class
+      class Particle {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          // random velocity
+          this.vx = (Math.random() - 0.5) * 12;
+          this.vy = (Math.random() - 0.5) * 12 - 5; // slight upward bias
+          this.size = Math.random() * 8 + 4;
+          this.color = `hsl(${Math.random() * 60 + 320}, 80%, 65%)`; // pink/purple/red hues
+          this.shape = Math.random() > 0.6 ? 'ribbon' : 'confetti'; // some are ribbons (rectangles)
+          this.rotation = Math.random() * 360;
+          this.life = 1.0; // opacity
+          this.decay = 0.01 + Math.random() * 0.02;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.15; // gravity
+          this.rotation += 2;
+          this.life -= this.decay;
+          return this.life > 0;
+        }
+
+        draw(ctx) {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.globalAlpha = this.life;
+          if (this.shape === 'ribbon') {
+            // draw a little rectangle like a ribbon
+            ctx.fillStyle = this.color;
+            ctx.fillRect(-this.size/2, -this.size/4, this.size, this.size/2);
+            // add a small highlight
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = this.life * 0.4;
+            ctx.fillRect(-this.size/3, -this.size/6, this.size/3, this.size/6);
+          } else {
+            // confetti circle or square
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            if (Math.random() > 0.5) {
+              // circle
+              ctx.arc(0, 0, this.size/2, 0, Math.PI * 2);
+            } else {
+              // square
+              ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+            }
+            ctx.fill();
+          }
+          ctx.restore();
+        }
+      }
+
+      // Start explosion at given center (x, y)
+      function startExplosion(centerX, centerY) {
+        if (explosionActive) return;
+        explosionActive = true;
+        canvas.style.display = 'block';
+
+        // create 120 particles
+        particles = [];
+        for (let i = 0; i < 120; i++) {
+          particles.push(new Particle(centerX, centerY));
+        }
+
+        // stop any previous animation
+        if (animationId) cancelAnimationFrame(animationId);
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          let anyAlive = false;
+          for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            if (p.update()) {
+              p.draw(ctx);
+              anyAlive = true;
+            } else {
+              particles.splice(i, 1);
+            }
+          }
+          if (anyAlive) {
+            animationId = requestAnimationFrame(animate);
+          } else {
+            // stop
+            canvas.style.display = 'none';
+            explosionActive = false;
+            animationId = null;
+          }
+        }
+        animate();
+      }
+
+      // ----- Pop and transition -----
+      let isPopped = false;
+
+      function onGiftClick(e) {
+        if (isPopped) return;
+        isPopped = true;
+
+        // Get center of gift box for explosion
+        const rect = giftBox.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        // Start confetti explosion
+        startExplosion(centerX, centerY);
+
+        // Play music (user interaction)
+        audio.play().catch(err => console.warn('Audio play failed:', err));
+
+        // Add pop animation to box
+        giftBox.classList.add('pop');
+
+        // After pop animation ends (0.6s) + a little delay to enjoy confetti, switch to page2
+        setTimeout(() => {
+          page1.style.display = 'none';
+          page2.style.display = 'flex';
+          // Optionally stop confetti after transition? It will continue and fade naturally.
+          // But we can also stop after a few seconds; it's okay.
+        }, 800); // 0.6s pop + 0.2s extra
+      }
+
+      // Attach events
+      giftBox.addEventListener('click', onGiftClick);
+      giftBox.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        onGiftClick(e);
+      });
+      giftContainer.addEventListener('click', (e) => {
+        if (!e.target.closest('.gift-box')) {
+          onGiftClick(e);
+        }
+      });
+
+      // Preload audio
+      audio.load();
+    })();
+  </script>
+
+  <!-- reminder to replace image and audio -->
+  <div style="display: none;">Replace image src and audio source with your own files.</div>
+</body>
+</html>
